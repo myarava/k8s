@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-test
+spec:
+  containers:
+    - name: tst-nginx
+      image: myarava09/nginx-tst:v01 
+      volumeMounts:
+        - mountPath: "/var/www/html"
+          name: data  
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: kube-pvc
